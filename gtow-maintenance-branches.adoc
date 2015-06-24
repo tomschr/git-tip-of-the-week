@@ -1,0 +1,53 @@
+Handling Maintenance Branches
+=============================
+Frank Sundermeyer and Thomas Schraitle
+:Author Initials: toms
+
+
+Problem
+-------
+
+You need to know how you could handle maintaince branches in Git.
+
+
+Solution
+--------
+
+As Git Flow is currently not able to do some nifty maintenance branch
+you need to do the heavy lifting yourself.
+
+1. Create your maintenance branch. Use the SHA1 sum which you want to
+   branch from this commit:
++
+   $ git branch maintenance/ses1 <SHA1>
+
+2. Implement features into the maintenance branch:
+
+   a. Create a temporary feature branch and switch to it:
++
+      $ git checkout maintenance/ses1
+      $ git branch feature/ses1-fix_foo -b feature/ses1-fix
+
+   b. Edit and commit
+
+   c. Merge back into maintenance/ses1 and delete temporary branch:
++
+      $ git merge maintenance/ses1
+      $ git checkout maintenance/ses1
+      $ git branch -d feature/ses1-fix_foo
+
+3. Merge changes from maintenance/ses1 to develop or vice versa:
+
+   a. Single commits:
++
+      $ git checkout <branch>
+      $ git cherry-pick <SHA1>
+
+   b. Whole features:
++
+Merge you feature into `develop` or `maintenance/ses1` _before_
+running `git br -d` or `git flow feature finish`
+
+
+For more information
+--------------------

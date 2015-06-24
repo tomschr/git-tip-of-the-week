@@ -1,0 +1,94 @@
+Pick Changes Selectively and Interactively
+==========================================
+Thomas Schraitle
+:Author Initials: toms
+
+
+Problem
+-------
+
+Sometimes simple adding files with `git add` isn't enough. You need a
+way to split changes in your file(s) up over several commits.
+
+
+Solution
+--------
+
+There are two ways to add files and changes interactively:
+
+1. `git gui`
+2. `git add -i` (or `git add --interactive` if you prefer the long option)
+
+Let's discuss the two solutions in regards to changes.
+
+
+Adding changes with `git gui`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The command `git gui` opens a graphical interface based on Tcl/Tk. With
+this GUI you can make changes to your repository by making new commits,
+amending existing ones, creating branches, and other actions.
+
+For this tip, we focus on how do add only certain changes. Let's assume,
+you've made changes in a file that should appear in separate commits.
+Do the following:
+
+1. Start `git gui` in your local repository.
++
+=> The GUI opens.
+
+2. Click your file from the left side ("Unstaged Changes").
++
+=> You see the diff on the right. Depending on your changes, you
+   should see different "hunks". A hunk is a change of consecutive
+   lines.
+
+3. Review your changes and click the right mouse button. You can:
+   a. Stage a hunk, or
+   b. Stage individual lines.
+      Depending on your changes you need to try it out what is
+      applicable to you.
++
+=> Your staged changes appear in the "Stage Changes" area on the left side.
+
+4. Add a commit message and click the "Commit" button to create a commit.
+
+
+Adding changes with `git add -i`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you prefer commandline over GUI, use `git add -i` in your repository.
+This gives you the following main screen:
+
+------------
+           staged     unstaged path
+  1:    unchanged        +3/-1 README.adoc
+
+*** Commands ***
+  1: status       2: update       3: revert       4: add untracked
+  5: patch        6: diff         7: quit         8: help
+What now>
+------------
+
+To stage hunks do the following:
+
+1. Enter "p" for (p)atching in the interactive `git add` session.
+2. Enter the number of your file (in our example it is "1") and press
+     return.
++
+=> The screen changes now and shows you the first hunk. Get help by "?"
+
+3. Decide if you would like to select the hunk ("y") or not ("n").
+   After every hunk is processed, you will end up in the main screen above.
+4. Review the diff with "d" and the number of the file (probably "1").
+   Close the viewer with "q".
+5. Return to your shell with "q".
+6. Commit your changes as usual.
+
+
+For more information
+--------------------
+
+* http://git-scm.com/book/en/v2/Git-Tools-Interactive-Staging
+* http://gitready.com/intermediate/2009/01/14/interactive-adding.html
+

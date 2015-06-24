@@ -1,0 +1,66 @@
+Stashing your Changes
+=====================
+Thomas Schraitle
+:Author Initials: toms
+
+
+Problem
+-------
+
+ou work on a problem, but then you get interrupted by a different
+task. You have uncommitted changes that you would like to save somehow.
+
+
+Solution
+--------
+
+Use `git stash` to save your changes and to clean your repository. A
+typical workflow would look like this:
+
+1. Work on your specific problem but get interrupted to work on a
+   different task.
+2. Get the list of changed files:
++
+   $ git status
+
+3. Save your changes:
++
+   $ git stash
+
+4. Work on the other task (add new files, create a branches, etc.)
+5. Recover your last saved state and apply your changes:
++
+   $ git stash pop
+
+6. Continue working on your original problem.
+
+You can use "git stash" several times and it will create a stack of
+stashes. Here are some useful commands in regards to stashes:
+
+* `git stash list`
++
+   stash@{0}: WIP on BRANCHNAME: SHA LAST COMMIT
++
+Gives you a list of all your stashes. The identifier
+(here: `stash@{0}`) helps you to identify your different stashes.
+
+* `git stash drop`  (CAREFUL!)
++
+Removes the last stash. Be careful, there is no "-h" option!
+
+* `git stash branch test`
++
+Creates a new branch from your stash.
+
+* Stash operates only to added files, it doesn't apply to untracked
+  files. If you want to add untracked files too, run the following
+  command to stash them all:
++
+  $ git add --all
+  $ git stash
+
+For more information
+--------------------
+
+* http://git-scm.com/book/en/v1/Git-Tools-Stashing
+* http://git-scm.com/docs/git-stash

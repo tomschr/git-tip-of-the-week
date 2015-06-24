@@ -1,0 +1,10 @@
+README
+======
+Thomas Schraitle
+
+:numbered:
+:toc:
+
+This Git repository collects some tips and best practices for Git users.
+
+

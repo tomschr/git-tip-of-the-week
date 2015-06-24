@@ -1,0 +1,43 @@
+Amending the Last Commit
+========================
+Thomas Schraitle
+:Author Initials: toms
+
+
+Problem
+-------
+
+You've committed one or more files and you realize, you've forgot to
+add or remove another file to the same commit.
+
+
+Solution
+--------
+
+Git knows the `--amend` option for the commit subcommand. Let's assume, we
+would like to add another file to the same(!) commit. Do the following:
+
+1. Add the file as usual to your staging area:
++
+   $ git add MISSING_FILE
+
+2. Run git again with the `--amend` option:
++
+   $ git commit --amend
+
+3. Enter your commit message. You will see the last commit message that
+   you have used. In most cases you can just it as it is. Of course, it
+   is also possible to change your commit message if you don't like it.
+
+4. Close your editor to send the commit to your Git repository.
+
+The same applies when you need to remove a file (use `git rm` or just
+`rm` instead of `git add`).
+
+WARNING: Don't amend public commits!
+
+
+For more information
+--------------------
+
+https://www.atlassian.com/zh/git/tutorial/rewriting-git-history#!commit-amend

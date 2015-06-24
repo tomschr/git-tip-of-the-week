@@ -1,0 +1,42 @@
+Ignoring Files
+==============
+Thomas Schraitle
+:Author Initials: toms
+
+
+Problem
+-------
+
+You need to know how to ignore files regardless of your working
+directory.
+
+
+Solution
+--------
+
+Git knows three configuration files which you can use to ignore files:
+
+1. `.gitignore`
++
+Usually this file is the right place if you need to exclude stuff inside
+your current repository which is relevant for _everyone_.
+
+2. `.git/info/exclude`
++
+This file is needed if you need to ignore some files locally in
+your current repository; this file is only relevant for _you_ and
+for nobody else.
+
+3. `~/.gitignore`
++
+Similar to `.git/info/exclude`, but applies to _all_ repositories
+on your machine. To set this globally, use the following command:
++
+    $ git config --global core.excludesfile ~/.gitignore
+    $ vim ~/.gitignore
+
+
+For more information
+--------------------
+
+http://git-scm.com/docs/gitignore
